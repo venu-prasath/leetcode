@@ -1,11 +1,11 @@
-package com.venuprasath.graph.directed_graph;
+package com.venuprasath.graph.undirected;
 
 import java.util.ArrayList;
 
-public class CycleDetection {
-    
+public class UndirectedGCycleDetection {
+
     ArrayList<ArrayList<Integer>> graph = new ArrayList();
-    
+
     public ArrayList<ArrayList<Integer>> createGraph() {
         //node 0
         ArrayList<Integer> neighbours0 = new ArrayList<>();
@@ -15,6 +15,7 @@ public class CycleDetection {
         //node 1
         ArrayList<Integer> neighbours1 = new ArrayList<>();
         neighbours1.add(2);
+        neighbours1.add(6);
         graph.add(neighbours1);
 
         //node 2
@@ -34,13 +35,14 @@ public class CycleDetection {
 
         //node 5
         ArrayList<Integer> neighbours5 = new ArrayList<>();
-        neighbours5.add(4);
+        //neighbours5.add(4);
         graph.add(neighbours5);
 
         //node 6
         ArrayList<Integer> neighbours6 = new ArrayList<>();
         neighbours6.add(7);
         neighbours6.add(1);
+        neighbours6.add(8);
         graph.add(neighbours6);
 
         //node 7
@@ -50,7 +52,8 @@ public class CycleDetection {
 
         //node 8
         ArrayList<Integer> neighbours8 = new ArrayList<>();
-        //neighbours8.add(6);
+        neighbours8.add(7);
+        neighbours8.add(6);
         graph.add(neighbours8);
 
         return graph;
@@ -58,38 +61,26 @@ public class CycleDetection {
 
 
     /*
-    * 0 - unvisited (default)
-    * 1 - exploring
-    * 2 - exporation completed
+     * 0 - unvisited (default)
+     * 1 - visited
      */
-    public boolean graphIsCyclic() {
+    public boolean isGraphCyclic(int current, int parent) {
         int[] visited = new int[graph.size()];
         System.out.println("Graph size: "+graph.size());
-        for(int i=0; i<graph.size(); i++) {
-            if(visited[i] == 0) {
-                if(checkCycle(i, visited)) {
-                    System.out.println("Cycle is present");
+        if(visited[current] == 0) {
+            visited[current] = 1;
+            for(int i=current; i<graph.get(current).size(); i++) {
+                if(visited[i] == 1 && i == parent) {
+                    /* do nothing */
+                } else if(visited[i] == 1 && i != parent && parent != -1) {
+                    System.out.println("i = " + i + ", " + current + ", " + parent);
                     return true;
+                } else {
+                    isGraphCyclic(i, current);
                 }
             }
         }
-        System.out.println("No cycles found");
-        return false;
-    }
-
-    private boolean checkCycle(int i, int[] visited) {
-        visited[i] = 1;
-        System.out.println("Exploring node: "+i);
-        System.out.println("#neighbors: "+ graph.get(i).size());
-        for(Integer neighbor: graph.get(i)) {
-            if(visited[neighbor] == 0) {
-                if(checkCycle(neighbor, visited)) return true;
-            } else if(visited[i] == 1){
-                return true;
-            }
-            System.out.println("Backtracking to node "+i);
-        }
-        visited[i] = 2;
+        System.out.println("current: " + current + ", " + parent);
         return false;
     }
 }
