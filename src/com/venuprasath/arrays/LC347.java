@@ -11,7 +11,8 @@ public class LC347 {
 
     public static void main(String[] args) {
 
-        //eg - [1,1,1,2,2,3], [1, 2]
+        //eg - [1,1,1,2,2,3]
+        //eg2 - [1,2] - does not work yet
         int[] nums = { 1, 1, 1, 1, 2, 2, 2, 3 };
         LC347 solution = new LC347();
         int[] values = solution.topKFrequent(nums, 2);
