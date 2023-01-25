@@ -1,4 +1,4 @@
-package com.venuprasath.arrays;
+package com.venuprasath.two_pointers;
 
 import static com.venuprasath.util.Extension.print;
 
