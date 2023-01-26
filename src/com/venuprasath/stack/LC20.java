@@ -8,7 +8,7 @@ public class LC20 {
 
     public static void main(String[] args) {
         //eg - "()"
-        String s = "{}[](())";
+        String s = "{[]}"; //"{}[](())";
         LC20 solution = new LC20();
         boolean result = solution.isValid(s);
         print(result);
