@@ -38,7 +38,9 @@ public class LC567_2 {
             arr[s2.charAt(i) - 'a']++;
             i++;
             j++;
-            if (j < s2.length()) arr[s2.charAt(j) - 'a']--;
+            if (j < s2.length()) {
+                arr[s2.charAt(j) - 'a']--;
+            }
             if (isEmpty(arr)) return true;
         }
         return isEmpty(arr);
