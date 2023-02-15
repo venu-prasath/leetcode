@@ -14,35 +14,35 @@ public class LC21 {
         list.add(1);
         list.add(3);
         list.add(5);
-        ListNode head1 = solution.prepareList(list);
+        LC143.ListNode head1 = solution.prepareList(list);
         list.clear();
         list.add(2);
         list.add(4);
         list.add(6);
-        ListNode head2 = solution.prepareList(list);
-        ListNode node = solution.mergeTwoLists(head1, head2);
+        LC143.ListNode head2 = solution.prepareList(list);
+        LC143.ListNode node = solution.mergeTwoLists(head1, head2);
         while(node != null) {
             print(node.val);
             node = node.next;
         }
     }
 
-    ListNode prepareList(List<Integer> list) {
-        ListNode node = new ListNode(0);
-        ListNode head = node;
+    LC143.ListNode prepareList(List<Integer> list) {
+        LC143.ListNode node = new LC143.ListNode(0);
+        LC143.ListNode head = node;
         for(Integer item: list) {
-            ListNode itm = new ListNode(item);
+            LC143.ListNode itm = new LC143.ListNode(item);
             node.next = itm;
             node = node.next;
         }
         return head;
     }
 
-    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        ListNode sHead = new ListNode();
-        ListNode curr = sHead;
-        ListNode ptr1 = list1;
-        ListNode ptr2 = list2;
+    public LC143.ListNode mergeTwoLists(LC143.ListNode list1, LC143.ListNode list2) {
+        LC143.ListNode sHead = new LC143.ListNode();
+        LC143.ListNode curr = sHead;
+        LC143.ListNode ptr1 = list1;
+        LC143.ListNode ptr2 = list2;
 
         while(ptr1 != null && ptr2 != null) {
             if(ptr1.val <= ptr2.val) {
@@ -70,11 +70,4 @@ public class LC21 {
         return sHead.next;
     }
 
-    public class ListNode {
-      int val;
-      ListNode next;
-      ListNode() {}
-      ListNode(int val) { this.val = val; }
-      ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-    }
 }
