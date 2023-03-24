@@ -1,5 +1,9 @@
 package com.venuprasath.tree;
 
+import java.util.LinkedList;
+import java.util.PriorityQueue;
+import java.util.Queue;
+
 import static com.venuprasath.util.Extension.print;
 import static com.venuprasath.util.Extension.println;
 
@@ -54,6 +58,21 @@ public class Tree {
         return false;
     }
 
+    public void bfs(Node root) {
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            Node node = queue.poll();
+            print(node.data+" -> ");
+            if(node.left != null) {
+                queue.add(node.left);
+            }
+            if(node.right != null) {
+                queue.add(node.right);
+            }
+        }
+    }
+
     public static void main(String[] args) {
         Tree tree = new Tree();
         tree.root = new Node(1);
@@ -75,6 +94,9 @@ public class Tree {
             print("\nThe tree is a full binary tree");
         else
             print("\nThe tree is not a full binary tree");
+
+        print("\nBFS: ");
+        tree.bfs(tree.root);
     }
 
 
