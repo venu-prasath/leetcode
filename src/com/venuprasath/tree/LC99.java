@@ -36,10 +36,14 @@ public class LC99 {
     public void inorder(TreeNode root) {
         if(root == null) return;
         inorder(root.left);
-        if(prev != null && root.val < prev.val) {
-            if(first == null) first = prev;
+
+        if(first == null && prev.val > root.val) {
+            first = prev;
+        }
+        if(first != null && prev.val > root.val) {
             second = root;
         }
+
         prev = root;
         inorder(root.right);
     }
