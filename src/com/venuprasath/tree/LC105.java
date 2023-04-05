@@ -32,7 +32,7 @@ public class LC105 {
     public static void inorder(TreeNode root) {
         if(root == null) return;
         inorder(root.left);
-        println(root.val + " -> ");
+        println("-> " + root.val);
         inorder(root.right);
     }
 
