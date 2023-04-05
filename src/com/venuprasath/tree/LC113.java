@@ -25,7 +25,7 @@ public class LC113 {
     List<List<Integer>> result = new ArrayList();
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
         List<Integer> subList = new ArrayList<>();
-        dfs(root, subList targetSum);
+        dfs(root, subList, targetSum);
         return result;
     }
 
