@@ -31,6 +31,7 @@ public class LC113 {
 
     public void dfs(TreeNode node, List<Integer> subList, int targetSum) {
         if(node == null) return;
+        subList.add(node.val);
         if(node.left == null && node.right == null && node.val == targetSum) result.add(new ArrayList<>(node.val));
 
         dfs(node.left, subList, targetSum-node.val);
