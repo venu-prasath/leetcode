@@ -15,7 +15,7 @@ public class LC99 {
         }
     }
 
-    TreeNode prev=null,first=null,second=null;
+    TreeNode first=null,second=null;
 
     public static void main(String[] args) {
         LC99 solution = new LC99();
@@ -33,6 +33,7 @@ public class LC99 {
         second.val = temp;
     }
 
+    TreeNode prev = new TreeNode(Integer.MIN_VALUE);
     public void inorder(TreeNode root) {
         if(root == null) return;
         inorder(root.left);
