@@ -18,7 +18,7 @@ public class LC150 {
         int result = 0;
         Stack<String> stack = new Stack();
 
-        for(String str: tokens) {
+        /*for(String str: tokens) {
             switch (str) {
                 case "+" -> {
                     int op1 = Integer.parseInt(stack.pop());
@@ -46,7 +46,7 @@ public class LC150 {
                 }
                 default -> stack.push(str);
             }
-        }
+        }*/
 
         result = Integer.parseInt(stack.pop());
         return result;
