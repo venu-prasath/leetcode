@@ -1,7 +1,5 @@
 package com.venuprasath.tree;
 
-import java.util.Random;
-import java.util.Stack;
 
 /**
  * @author Vincent Cancelliere
