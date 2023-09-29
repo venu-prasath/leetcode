@@ -8,18 +8,18 @@ import java.util.Stack;
  * @pledge I pledge my honor that I have abided by the Stevens Honor System
  */
 public class Treap <E extends Comparable<E>>{
-    private static class Node<E> {
+    /*private static class Node<E> {
         public E data;
         public int priority;
         public Node<E> left;
         public Node<E> right;
 
-        /**
+        *//**
          *
          * @param data is implemented into the new Node's data
          * @param priority is implemented into the new Node's priority
          * @throws NullPointerException when the data is null
-         */
+         *//*
         public Node (E data, int priority) {
             if (data == null)
                 throw new NullPointerException("Input data is null");
@@ -57,10 +57,10 @@ public class Treap <E extends Comparable<E>>{
         root = null;
     }
 
-    /**
+    *//**
      *
      * @param seed is implemented to make a new Random for priorityGenerator
-     */
+     *//*
     public Treap(long seed) {
         priorityGenerator = new Random(seed);
         root = null;
@@ -148,13 +148,13 @@ public class Treap <E extends Comparable<E>>{
         return true;
     }
 
-    /**
+    *//**
      * This is a helper function I made
      *
      * @param root is the node you are comparing to find the Node
      * @param key is the data you are comparing to the Node's data
      * @return the Node found or return null if not found
-     */
+     *//*
     private Node<E> finder(Node<E> root, E key) {
         if (root.data.compareTo(key) == 0)
             return root;
@@ -212,6 +212,6 @@ public class Treap <E extends Comparable<E>>{
             sb.append(toString(root.right,level + 1));
         }
         return sb.toString();
-    }
+    }*/
 
 }
