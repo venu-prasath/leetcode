@@ -9,13 +9,13 @@ public class LC26 {
     }
 
     public int removeDuplicates(int[] nums) {
-        int n = nums.length;
-        int j = 0;
-        for(int i=0; i<nums.length; i++) {
-            if(nums[i] != nums[j]) {
-                nums[j] = nums[i];
+        int insertIndex = 1;
+        for(int i=1; i<nums.length; i++) {
+            if(nums[i] != nums[i-1]) {
+                nums[insertIndex] = nums[i];
+                insertIndex++;
             }
         }
-        return j+1;
+        return insertIndex;
     }
 }
