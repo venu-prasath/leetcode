@@ -17,24 +17,19 @@ public class LC42 {
         int leftMax = 0;
         int right = height.length - 1;
         int rightMax = 0;
-        int total = 0;
+        int answer = 0;
 
-        while(left <= right) {
-            if(height[left] <= height[right]) {
-                if(height[left] >= leftMax) leftMax = height[left];
-                else {
-                    total = total + leftMax - height[left];
-                }
+        while(left < right) {
+            if(leftMax < rightMax) {
                 left++;
+                leftMax = Math.max(leftMax, height[left]);
+                answer += leftMax - height[left];
             } else {
-                if(height[right] >= rightMax) rightMax = height[right];
-                else {
-                    total = total + rightMax - height[right];
-                }
                 right--;
+                rightMax = Math.max(rightMax, height[right]);
+                answer += rightMax - height[right];
             }
         }
-
-        return total;
+        return answer;
     }
 }
