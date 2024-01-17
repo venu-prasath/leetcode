@@ -1,5 +1,6 @@
 package com.venuprasath.concurrency;
 
+import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static com.venuprasath.util.Extension.println;
@@ -49,24 +50,37 @@ public class LC1114 {
 
 class Foo {
 
-    private AtomicInteger firstJobDone = new AtomicInteger(0);
-    private AtomicInteger secondJobDone = new AtomicInteger(0);
+    Semaphore[] semaphores;
+    int numOfThreads = 3;
+    Foo() {
+        semaphores = new Semaphore[numOfThreads];
+        try {
+            for(int i=0; i<numOfThreads; i++) {
+                semaphores[i] = new Semaphore(1, true);
+                semaphores[i].acquire();
+            }
+            semaphores[0].release();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-    Foo() {}
+    }
 
     public void first(Runnable printFirst) throws InterruptedException {
+        semaphores[0].acquire();
         printFirst.run();
-        firstJobDone.incrementAndGet();
+        semaphores[1].release();
     }
 
     public void second(Runnable printSecond) throws InterruptedException {
-        while(firstJobDone.get() != 1) {}
+        semaphores[1].acquire();
         printSecond.run();
-        secondJobDone.incrementAndGet();
+        semaphores[2].release();
     }
 
     public void third(Runnable printThird) throws InterruptedException {
-        while(secondJobDone.get() != 1) {}
+        semaphores[2].acquire();
         printThird.run();
+        semaphores[0].release();
     }
 }
