@@ -1,7 +1,5 @@
 package com.venuprasath.priorityQueue;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.PriorityQueue;
 
 import static com.venuprasath.util.Extension.println;
@@ -69,7 +67,7 @@ public class LC407 {
         }
 
         @Override
-        public int compareTo(@NotNull Cell otherCell) {
+        public int compareTo(Cell otherCell) {
             if(this.height == otherCell.height) return 0;
             if(this.height < otherCell.height) return -1;
             return 1;
