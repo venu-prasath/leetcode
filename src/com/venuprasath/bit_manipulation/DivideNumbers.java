@@ -5,8 +5,8 @@ import static com.venuprasath.util.Extension.println;
 public class DivideNumbers {
 
     public static void main(String[] args) {
-        int dividend = 22;
-        int divisor = 3;
+        int dividend = -2147483648;
+        int divisor = -1;
         int result = divide(dividend, divisor);
         println(result);
     }
@@ -17,10 +17,10 @@ public class DivideNumbers {
         if(dividend >= 0 && divisor < 0) positive = false;
         if(dividend < 0 && divisor >= 0) positive = false;
 
-        int n = Math.abs(dividend);
-        int d = Math.abs(divisor);
+        long n = Math.abs(dividend);
+        long d = Math.abs(divisor);
 
-        int ans = 0;
+        long ans = 0;
 
         while(n >= d) {
             int count = 0;
@@ -33,8 +33,8 @@ public class DivideNumbers {
         if( ans >= (2^31) && positive) return Integer.MAX_VALUE;
         if(ans >= (2^31) && !positive) return Integer.MIN_VALUE;
         else {
-            if(positive) return ans;
-            else return -1 * ans;
+            if(positive) return (int) ans;
+            else return (int) (-1 * ans);
         }
     }
 }
