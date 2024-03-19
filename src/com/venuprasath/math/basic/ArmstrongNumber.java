@@ -20,6 +20,4 @@ public class ArmstrongNumber {
         }
         return sum == duplicate;
     }
-
-
 }
