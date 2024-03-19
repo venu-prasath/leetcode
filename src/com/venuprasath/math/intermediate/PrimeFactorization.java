@@ -1,14 +1,13 @@
 package com.venuprasath.math.intermediate;
 
-import static com.venuprasath.util.Extension.println;
-
 public class PrimeFactorization {
 
     public static void main(String[] args) {
-        getSpf(29);
+        int[] spf = getSpf(60);
+
     }
 
-    public static void getSpf(int n) {
+    public static int[] getSpf(int n) {
         int[] spf = new int[n+1];
         for(int i=1; i <= n; i++) spf[i] = i;
 
@@ -21,6 +20,6 @@ public class PrimeFactorization {
                 }
             }
         }
-        println(spf[n]);
+        return spf;
     }
 }
