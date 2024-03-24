@@ -5,9 +5,8 @@ import java.util.Arrays;
 public class RadixSort {
 
     public static void main(String[] args) {
-        int arr[] = { 170, 45, 75, 90, 802, 24, 2, 66 };
+        int[] arr = { 170, 45, 75, 90, 802, 24, 2, 66 };
         int n = arr.length;
-        if(n < 1) return;
         radixSort(arr, n);
         print(arr, n);
     }
@@ -22,7 +21,7 @@ public class RadixSort {
     public static void countSort(int[] arr, int n, int exp) {
         int[] output = new int[n];
         int i;
-        int count[] = new int[10];
+        int[] count = new int[10];
         Arrays.fill(count, 0);
 
         for(i=0; i<n; i++) {
@@ -44,6 +43,7 @@ public class RadixSort {
     }
 
     public static void radixSort(int[] arr, int n) {
+        if(n < 1) return;
         int largest = getMax(arr, n);
 
         for(int exp=1; largest/exp > 0; exp*=10) {
