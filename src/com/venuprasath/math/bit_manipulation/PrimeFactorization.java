@@ -1,4 +1,4 @@
-package com.venuprasath.math.intermediate;
+package com.venuprasath.math.bit_manipulation;
 
 public class PrimeFactorization {
 
