@@ -10,7 +10,7 @@ public class LC621 {
         char[] tasks = new char[] {'A', 'A', 'A', 'B', 'B', 'B'};
 
         LC621 solution = new LC621();
-        int answer = solution.leastInterval(tasks, 2);
+        int answer = solution.leastInterval2(tasks, 2);
         println("Output: " + answer);
     }
 
@@ -39,5 +39,25 @@ public class LC621 {
 
         }
         return time;
+    }
+
+    private int leastInterval2(char[] tasks, int n) {
+        int[] freq = new int[26];
+        for (char task : tasks) {
+            freq[task - 'A']++;
+        }
+
+        Arrays.sort(freq);
+
+        int maxFreq = freq[25];
+        int idleTime = (maxFreq - 1) * n;
+
+        for (int i = 24; i >= 0 && idleTime > 0; i--) {
+            idleTime -= Math.min(maxFreq - 1, freq[i]);
+        }
+
+        idleTime = Math.max(0, idleTime);
+
+        return tasks.length + idleTime;
     }
 }
